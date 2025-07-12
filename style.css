@@ -33,16 +33,3 @@ tr:nth-child(odd) td {
 caption {
   padding: 10px;
 }
-
-th[scope = "row"], thead th:first-of-type {
-  border-left: 2px solid;
-  border-right: 2px solid;
-}
-
-tr:last-child th[scope = "row"] {
-  border-bottom: 2px solid;
-}
-
-thead th:first-of-type {
-  border-top: 2px solid;
-}
