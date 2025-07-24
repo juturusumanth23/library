@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="script.js" defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Library</title>
+	<link rel="stylesheet" href="./style.css">
+	<script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        
-    </div>
+	<div class="container">
+			
+	</div>
+	<button class="new-btn">New Book</button>
+	<div class="form">
+		<form action="" method="post" id="myForm">
+			<div class="form-widget">
+				<label for="title">Book name
+					<input type="text" name="title" id="title" required>
+				</label>
+			</div>
+			<div class="form-widget">
+				<label for="author">Author
+					<input type="text" name="author" id="author" required>
+				</label>
+			</div>
+			<div class="form-widget">
+				<label for="pagesCount">Number of Pages
+					<input type="number" name="pagesCount" id="pagesCount" required>
+				</label>
+			</div>
+			<div class="form-widget">
+				<label for="isRead">
+					<input type="checkbox" name="isRead" id="isRead" value="false">
+					I have read the book
+				</label>
+			</div>
+			<div class="form-widget">
+				<button type="submit" id="submit">Add Book</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

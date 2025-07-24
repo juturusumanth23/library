@@ -22,6 +22,13 @@ function displayLibrary() {
     let rows = myLibrary.length
     const container = document.querySelector(".container"); 
     let table = document.createElement("table");
+    let tr = document.createElement("tr");
+    for (j of Object.keys(myLibrary[0])) {
+        let th = document.createElement("th");
+        th.textContent = `${j}`;
+        tr.appendChild(th);
+    }
+    table.appendChild(tr);
     for (let i of myLibrary) {
         console.log(i);
         console.log(Object.keys(i));
@@ -36,6 +43,27 @@ function displayLibrary() {
         table.appendChild(tr);
     }
     container.appendChild(table);
+}
+
+const btn = document.querySelector(".new-btn");
+btn.addEventListener("click", showForm);
+
+function showForm() {
+    const formDiv = document.querySelector(".form");
+    formDiv.setAttribute("style", "display:block");
+}
+
+const myForm = document.querySelector("#myForm");
+myForm.addEventListener("submit", addNewBook);
+
+function addNewBook(e) {
+    e.preventDefault();
+    const inputs = document.querySelectorAll("input");
+    const bookDetails = [...inputs].map(item => item.value);
+    addBookToLibrary(...bookDetails);
+    console.log(myLibrary);
+    console.log("new book added");
+    displayLibrary();
 }
 
 let a = "a";
