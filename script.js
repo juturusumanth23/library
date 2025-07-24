@@ -11,6 +11,10 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pagesCount} pages, ${this.isRead}`;
 }
 
+Book.prototype.toggleReadStatus = function() {
+    this.isRead = this.isRead ? false : true ;
+}
+
 function addBookToLibrary(title, author, pagesCount, isRead) {
     let bookObj = new Book(title, author, pagesCount, isRead);
     const bookId = crypto.randomUUID()
@@ -18,9 +22,10 @@ function addBookToLibrary(title, author, pagesCount, isRead) {
     myLibrary.push(bookObj);
 }
 
+const container = document.querySelector(".container"); 
+
 function displayLibrary() {
     let rows = myLibrary.length
-    const container = document.querySelector(".container"); 
     let table = document.createElement("table");
     let tr = document.createElement("tr");
     for (j of Object.keys(myLibrary[0])) {
@@ -40,9 +45,27 @@ function displayLibrary() {
             tr.appendChild(td);
             console.log(`${i[j]}`);
         }
+        let td = document.createElement("td");
+        let removeButton = document.createElement("button");
+        removeButton.textContent = "remove";
+        removeButton.name = `${i.bookId}`;
+        removeButton.addEventListener("click", removeBook);
+        td.appendChild(removeButton);
+        tr.appendChild(td);
         table.appendChild(tr);
     }
     container.appendChild(table);
+}
+
+function removeBook(e) {
+    let id = e.target.name;
+    for(let i=0; i<myLibrary.length; i++) {
+        if(myLibrary[i].bookId === id) {
+            myLibrary.splice(i,1);
+        }
+    }
+    container.textContent = '';
+    displayLibrary();
 }
 
 const btn = document.querySelector(".new-btn");
@@ -63,6 +86,7 @@ function addNewBook(e) {
     addBookToLibrary(...bookDetails);
     console.log(myLibrary);
     console.log("new book added");
+    container.textContent = '';
     displayLibrary();
 }
 
