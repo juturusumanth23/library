@@ -11,10 +11,6 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pagesCount} pages, ${this.isRead}`;
 }
 
-Book.prototype.toggleReadStatus = function() {
-    this.isRead = this.isRead ? false : true ;
-}
-
 function addBookToLibrary(title, author, pagesCount, isRead) {
     let bookObj = new Book(title, author, pagesCount, isRead);
     const bookId = crypto.randomUUID()
@@ -45,13 +41,24 @@ function displayLibrary() {
             tr.appendChild(td);
             console.log(`${i[j]}`);
         }
-        let td = document.createElement("td");
+        let td1 = document.createElement("td");
         let removeButton = document.createElement("button");
         removeButton.textContent = "remove";
         removeButton.name = `${i.bookId}`;
         removeButton.addEventListener("click", removeBook);
-        td.appendChild(removeButton);
-        tr.appendChild(td);
+        td1.appendChild(removeButton);
+        tr.appendChild(td1);
+
+        let td2 = document.createElement("td");
+        let toggleButton = document.createElement("button");
+        toggleButton.textContent = "change read status";
+        toggleButton.name = `${i.bookId}`;
+        toggleButton.addEventListener("click", ()=>{
+            i.toggleReadStatus();
+        });
+        td2.appendChild(toggleButton);
+        tr.appendChild(td2);
+
         table.appendChild(tr);
     }
     container.appendChild(table);
@@ -64,6 +71,14 @@ function removeBook(e) {
             myLibrary.splice(i,1);
         }
     }
+    container.textContent = '';
+    displayLibrary();
+}
+
+Book.prototype.toggleReadStatus = function() {
+    this.isRead = (this.isRead == "is already read") 
+                ? "is not read yet" 
+                : "is already read";
     container.textContent = '';
     displayLibrary();
 }

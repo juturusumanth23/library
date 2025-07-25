@@ -34,6 +34,14 @@ caption {
   padding: 10px;
 }
 
+.new-btn {
+  margin-left: 200px;
+  margin-top: 60px;
+  font-size: 20px;
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+
 .form {
   margin: 60px;
   border: 2px solid red;
@@ -41,9 +49,11 @@ caption {
   border-radius: 45px;
   display: none;
 }
+
 .form-widget {
   margin: 30px;
 }
+
 label {
   display: flex;
   justify-content: end;
@@ -51,19 +61,23 @@ label {
   gap: 25px;
   font-size: 20px;
 }
+
 label[for="isRead"] {
   width: max-content;
   margin-left: 120px;
 }
+
 input {
   border: 2px solid goldenrod;
   height: 35px;
   width: 250px;
   font-size: inherit;
 }
+
 input[type="checkbox"] {
   width: 35px;
 }
+
 button#submit {
   border: none;
   border-radius: 45px;
